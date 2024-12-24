@@ -2,6 +2,11 @@
   "name": "pingpong",
   "main": "expo-router/entry",
   "version": "1.0.0",
+  "engines": {
+    "node": ">=20.18.0",
+    "pnpm": "^9.15.1"
+  },
+  "packageManager": "pnpm@9.15.1",
   "scripts": {
     "start": "expo start",
     "android": "expo run:android",
@@ -58,6 +63,5 @@
     "prettier-plugin-tailwindcss": "^0.6.9",
     "typescript": "^5.3.3"
   },
-  "private": true,
-  "packageManager": "pnpm@9.15.1"
+  "private": true
 }
