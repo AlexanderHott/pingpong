@@ -1,4 +1,3 @@
-import { Link, router } from "expo-router";
 import { useState } from "react";
 import {
   ActivityIndicator,
@@ -8,6 +7,8 @@ import {
   TextInput,
   View,
 } from "react-native";
+import { Link, router } from "expo-router";
+
 import { createActionGroup, useActionGroups } from "@/api";
 
 export default function Index() {

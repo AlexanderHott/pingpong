@@ -1,11 +1,14 @@
 import "expo-dev-client";
+
+import { Text, View } from "react-native";
 import { Stack } from "expo-router";
 import { useMigrations } from "drizzle-orm/expo-sqlite/migrator";
+
 import { db } from "@/db";
 import migrations from "@/drizzle/migrations";
-import { View, Text } from "react-native";
 
 import "../global.css";
+
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 const queryClient = new QueryClient();

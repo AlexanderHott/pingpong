@@ -1,6 +1,5 @@
-import { createAction, useActionGroup } from "@/api";
-import { router, useLocalSearchParams } from "expo-router";
-import { type Dispatch, type SetStateAction, useState } from "react";
+import type { Dispatch, SetStateAction } from "react";
+import { useState } from "react";
 import {
   ActivityIndicator,
   Button,
@@ -9,6 +8,9 @@ import {
   TextInput,
   View,
 } from "react-native";
+import { router, useLocalSearchParams } from "expo-router";
+
+import { createAction, useActionGroup } from "@/api";
 
 type Header = {
   id: number;

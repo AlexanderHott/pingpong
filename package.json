@@ -16,6 +16,8 @@
     "db:generate": "drizzle-kit generate",
     "lint": "expo lint",
     "lint:fix": "expo lint --fix",
+    "format": "prettier . --write",
+    "format:check": "prettier . --check",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
@@ -53,6 +55,7 @@
   "devDependencies": {
     "@babel/core": "^7.25.2",
     "@fsouza/prettierd": "^0.25.4",
+    "@ianvs/prettier-plugin-sort-imports": "^4.4.0",
     "@types/eslint": "^8.56.10",
     "@types/react": "~18.3.12",
     "@typescript-eslint/eslint-plugin": "^8.18.2",

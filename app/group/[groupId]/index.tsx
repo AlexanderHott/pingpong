@@ -1,6 +1,7 @@
-import { useActionGroup } from "@/api";
+import { ActivityIndicator, Button, FlatList, Text, View } from "react-native";
 import { Link, useLocalSearchParams } from "expo-router";
-import { View, Text, ActivityIndicator, FlatList, Button } from "react-native";
+
+import { useActionGroup } from "@/api";
 
 export default function ActionGroup() {
   const { groupId: groupIdStr } = useLocalSearchParams();
