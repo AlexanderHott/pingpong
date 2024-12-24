@@ -14,11 +14,11 @@ export default function TabLayout() {
         }}
       />
       <Tabs.Screen
-        name="add"
+        name="log"
         options={{
-          title: "Add",
+          title: "Req Log",
           tabBarIcon: ({ color }) => (
-            <FontAwesome size={28} name="plus-circle" color={color} />
+            <FontAwesome size={28} name="list" color={color} />
           ),
         }}
       />

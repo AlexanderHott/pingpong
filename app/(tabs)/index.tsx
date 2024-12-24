@@ -1,9 +1,17 @@
-import { Link } from "expo-router";
+import { Link, router } from "expo-router";
 import { useState } from "react";
-import { Button, Text, View } from "react-native";
+import {
+  ActivityIndicator,
+  Button,
+  FlatList,
+  Text,
+  TextInput,
+  View,
+} from "react-native";
+import { createActionGroup, useActionGroups } from "@/api";
 
 export default function Index() {
-  const [text, setText] = useState("");
+  const { data: actionGroups, isPending, error, isError } = useActionGroups();
   return (
     <View
       style={{
@@ -12,15 +20,59 @@ export default function Index() {
         alignItems: "center",
       }}
     >
-      <Button
-        title="Get http://172.20.34.32:8000"
-        onPress={async () => {
-          const res = await fetch("http://172.20.34.32:8000");
-          setText(await res.text());
-        }}
+      <Text className="text-2xl">Action Groups</Text>
+      <AddGroupForm />
+      {isPending && <ActivityIndicator />}
+      {isError && <Text className="text-red-500">{error.message}</Text>}
+      <FlatList
+        data={actionGroups}
+        renderItem={({ item }) => (
+          <Link
+            href={{
+              pathname: "/group/[groupId]",
+              params: { groupId: item.id },
+            }}
+          >
+            {item.name}
+          </Link>
+        )}
       />
-      <Text style={{ fontFamily: "JetBrainsMono" }}>Resp: {text}</Text>
-      <Link href="/method">method</Link>
+    </View>
+  );
+}
+
+function AddGroupForm() {
+  const {
+    mutate: createGroup,
+    isPending,
+    error,
+    isError,
+  } = createActionGroup();
+  const [name, setName] = useState("");
+
+  return (
+    <View>
+      <TextInput
+        value={name}
+        placeholder="My Group"
+        onChangeText={(text) => setName(text)}
+      />
+      <Button
+        title="Add Group"
+        onPress={() =>
+          createGroup(name, {
+            onSuccess(data) {
+              setName("");
+              router.push({
+                pathname: "/group/[groupId]",
+                params: { groupId: data[0].id },
+              });
+            },
+          })
+        }
+        disabled={name.length < 1 || isPending}
+      />
+      {isError && <Text className="text-red-500">{error.message}</Text>}
     </View>
   );
 }

@@ -43,7 +43,8 @@
             "./assets/fonts/JetBrainsMono-Italic.ttf"
           ]
         }
-      ]
+      ],
+      "expo-sqlite"
     ],
     "experiments": {
       "typedRoutes": true
