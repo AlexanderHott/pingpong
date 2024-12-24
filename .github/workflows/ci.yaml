@@ -9,30 +9,40 @@ on:
       - main
 
 jobs:
-  lint-and-typecheck:
+  lint:
     runs-on: ubuntu-latest
 
     steps:
-      # Set up pnpm
       - uses: pnpm/action-setup@v3
-
-      # Set up Node.js with caching for pnpm
       - uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version-file: ".nvmrc"
           cache: "pnpm"
 
-      # Check out the code
       - uses: actions/checkout@v4
 
-      # Install dependencies
       - shell: bash
         run: pnpm install
 
-      # Run lint and typecheck
       - name: Run lint
         shell: bash
         run: pnpm lint
+
+  typecheck:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: pnpm/action-setup@v3
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: ".nvmrc"
+          cache: "pnpm"
+
+      - uses: actions/checkout@v4
+
+      - shell: bash
+        run: pnpm install
 
       - name: Run typecheck
         shell: bash
