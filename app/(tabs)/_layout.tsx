@@ -1,15 +1,41 @@
+import { LinearGradient } from "expo-linear-gradient";
 import { Tabs } from "expo-router";
-import FontAwesome from "@expo/vector-icons/FontAwesome";
+import { Feather } from "@expo/vector-icons";
 
 export default function TabLayout() {
   return (
-    <Tabs screenOptions={{ tabBarActiveTintColor: "blue", headerShown: false }}>
+    <Tabs
+      screenOptions={{
+        tabBarActiveTintColor: "black",
+        headerShown: false,
+        tabBarStyle: {
+          backgroundColor: "white",
+          borderColor: "transparent",
+          // borderTopWidth: 1,
+          // borderWidth: 0,
+        },
+        tabBarBackground: () => (
+          <LinearGradient
+            start={{ x: 0, y: 0 }}
+            end={{ x: 1, y: 1 }}
+            colors={[
+              "#00000000",
+              "#00000000",
+              "#000000",
+              "#00000000",
+              "#00000000",
+            ]}
+            style={{ width: "100%", height: 1 }}
+          />
+        ),
+      }}
+    >
       <Tabs.Screen
         name="index"
         options={{
           title: "Home",
           tabBarIcon: ({ color }) => (
-            <FontAwesome size={28} name="home" color={color} />
+            <Feather size={24} name="home" color={color} />
           ),
         }}
       />
@@ -18,7 +44,7 @@ export default function TabLayout() {
         options={{
           title: "Req Log",
           tabBarIcon: ({ color }) => (
-            <FontAwesome size={28} name="list" color={color} />
+            <Feather size={24} name="list" color={color} />
           ),
         }}
       />
