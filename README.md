@@ -12,5 +12,5 @@ pnpm expo run:android
 If android emulator get's stuck after crash
 
 ```bash
-rm -rf ~/.config/.android/avd/pixel.avd/*.lock
+sudo rm -rf /home/ott/.config/.android/avd/Pixel_9_Pro_XL_API_35.avd/*.lock
 ```
