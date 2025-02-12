@@ -85,6 +85,6 @@ jobs:
       - shell: bash
         run: pnpm install
 
-      - name: Run format check
+      - name: Run format
         shell: bash
-        run: pnpm format:check
+        run: pnpm format
